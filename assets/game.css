@@ -1,0 +1,341 @@
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: #000;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+
+/* Wrapper and Title */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.game-title {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 22px;
+}
+
+.title-part-ttt {
+  font-size: 50px;
+  color: #00fff7;
+  text-shadow: 0 0 5px #00fff7, 0 0 11px #00fff7;
+}
+
+.title-part-glow {
+  font-size: 43px;
+  padding-left: 12px;
+  color: #ff00bf;
+  text-shadow: 0 0 5px #ff00bf, 0 0 11px #ff00bf;
+  animation: flicker 3s infinite ease-in-out;
+}
+
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+
+  20%,
+  24%,
+  55% {
+    opacity: 0.7;
+  }
+}
+
+
+/* Game Board */
+.neon-board {
+  position: relative;
+  display: grid;
+  width: 400px;
+  height: 400px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin-bottom: 40px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-weight: bold;
+  border: none;
+  position: relative;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.cell:not(:nth-child(3n)) {
+  border-right: 3px solid red;
+}
+
+.cell:nth-child(n+4):nth-child(-n+9) {
+  border-top: 3px solid red;
+}
+
+.orange {
+  color: #ff9100;
+  text-shadow: 0 0 8px rgba(255, 145, 0, 0.7);
+}
+
+.cyan {
+  color: #00f6ff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+}
+
+/* Win Line */
+.win-line {
+  position: absolute;
+  z-index: 10;
+  transform-origin: center center;
+  transition: width 1s ease-in-out;
+  pointer-events: none;
+}
+
+.win-line.show {
+  display: block;
+}
+
+/* Win Line Glowing Polygon (Optional - For Animated Diagonal Line) */
+.glow-polygon {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  clip-path: polygon(0% 50%,
+      10% 40%,
+      50% 38%,
+      90% 40%,
+      100% 50%,
+      90% 60%,
+      50% 62%,
+      10% 60%);
+
+  animation: flickerLine 3s infinite ease-in-out;
+}
+
+/* Base flicker animation shared by all */
+.glow-polygon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  border-radius: 12px;
+  animation: flickerLine 3s infinite ease-in-out;
+}
+
+
+/* Dynamic glow color for win-line */
+.win-line.orange .glow-polygon::before {
+  background: #ff9900;
+  filter:
+    drop-shadow(0 0 6px #ff9900) drop-shadow(0 0 12px #ff9900);
+}
+
+.win-line.cyan .glow-polygon::before {
+  background: #00fff7;
+  filter:
+    drop-shadow(0 0 6px #00fff7) drop-shadow(0 0 12px #00fff7);
+}
+
+
+@keyframes flickerLine {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+
+  20%,
+  24%,
+  55% {
+    opacity: 0.7;
+  }
+}
+
+
+
+/* Status of Turn and Win */
+.status {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+#statusText {
+  display: inline-block;
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  padding: 9px 24px;
+  padding-bottom: 13px;
+  border: 2.4px dotted #ff00bf;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+
+  color: #00f6ff;
+  text-shadow:
+    0 0 1px #ff00bf,
+    0 0 2px #ff00bf,
+    1px 1px 0 #ff00bf,
+    2px 2px 4px #ff00bf,
+    0 0 6px #ff00bf;
+
+  box-shadow: 0 0 9px #ff00bf inset;
+
+  max-width: 0;
+  animation: typing 1.2s steps(30, end) forwards, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    max-width: 0
+  }
+
+  to {
+    max-width: 500px
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+
+  100% {
+    border-color: #ff00bf
+  }
+}
+
+/* Button Group Layout */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 43px;
+  margin-bottom: 30px;
+}
+
+/* Base Button Style */
+button.btn {
+  padding: 10px 30px;
+  font-size: 19px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  background: transparent;
+  text-align: center;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Icon inside button */
+button.btn i {
+  font-size: 22px;
+}
+
+/* Restart Button - Pink Glow */
+.btn.restart {
+  border-color: #ff00bf;
+  color: #ff00bf;
+}
+
+.btn.restart:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: scale(1.05);
+  background-color: #ff00bf;
+  box-shadow: 0 0 12px #ff00bf, 0 0 20px #ff00bf;
+}
+
+/* Quit Button - Cyan Glow */
+.btn.quit {
+  border-color: #00c8d9;
+  color: #00c8d9;
+}
+
+.btn.quit:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: scale(1.05);
+  background-color: #00c8d9;
+  box-shadow: 0 0 12px #00c8d9, 0 0 20px #00c8d9;
+}
+
+
+/* Footer */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  background: #000;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.footer-rainbow {
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg,
+      #ff0000,
+      #ff7f00,
+      #ffff00,
+      #00ff00,
+      #0000ff,
+      #4b0082,
+      #8f00ff,
+      #4b0082,
+      #0000ff,
+      #00ff00,
+      #ffff00,
+      #ff7f00,
+      #ff0000);
+  background-size: 800% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  animation: rainbowLoop 20s ease-in-out infinite alternate;
+}
+
+@keyframes rainbowLoop {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}

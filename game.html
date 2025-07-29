@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/img/TicTacToeGlow.png" type="image/x-icon" />
+  <title>Tic Tac Toe - Glow || Game</title>
+
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- DotGothic16 Font -->
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+  <!-- Remix Icon CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- External CSS File -->
+  <link rel="stylesheet" href="assets/game.css" />
+</head>
+
+<body>
+  <!--Wrapper with Heading-->
+  <div class="wrapper">
+    <h1 class="game-title">
+      <span class="title-part-ttt">Tic Tac Toe</span>
+      <span class="title-part-glow">Glow</span>
+    </h1>
+
+    <!-- Turn and Win Announcement -->
+    <div class="status">
+      <p id="statusText">Player X's Turn</p>
+    </div>
+
+    <!-- Game Board -->
+    <div class="neon-board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+
+      <!-- Animated Diagonal Win Line -->
+      <div class="win-line" id="winLine">
+        <div class="glow-polygon"></div>
+      </div>
+    </div>
+
+    <!-- Restart and Quit Buttons -->
+    <div class="button-group">
+      <button id="restartBtn" class="btn restart">
+        <i class="ri-restart-line"></i> Restart
+      </button>
+      <button id="quitBtn" class="btn quit" onclick="window.location.href='home.html'">
+        <i class="ri-home-5-line"></i> Go Home
+      </button>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-rainbow">
+        © 2025 Tic Tac Toe Glow — Let the light decide the winner!
+      </p>
+    </footer>
+  </div>
+
+  <!-- External JS -->
+  <script src="assets/game.js"></script>
+</body>
+
+</html>

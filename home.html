@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/img/TicTacToeGlow.png" type="image/x-icon" />
+  <meta name="theme-color" content="#000000" />
+  <title>Tic Tac Toe - Glow || Home</title>
+
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Remix Icon CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- External CSS File -->
+  <link rel="stylesheet" href="assets/home.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Left Side Content -->
+      <div class="content new-layout">
+        <h1 class="title">
+          <span class="main-heading">TIC TAC TOE</span>
+          <div class="glow-wrap">
+            <span class="glow-title">GLOW</span>
+          </div>
+        </h1>
+
+        <!-- Navigation Buttons -->
+        <div class="buttons">
+          <button class="btn single" id="single-btn">
+            <i class="ri-user-line"></i> SINGLEPLAYER
+          </button>
+          <button class="btn multi" id="multi-btn">
+            <i class="ri-group-line"></i> MULTIPLAYER
+          </button>
+          <button class="btn leader" id="leaderboard-btn">
+            <i class="ri-bar-chart-grouped-line"></i> LEADERBOARD
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Preview Board -->
+      <div class="preview">
+        <div class="neon-board">
+          <div class="cell o"><span>O</span></div>
+          <div class="cell x"><span>X</span></div>
+          <div class="cell o win"><span>O</span></div>
+          <div class="cell x"><span>X</span></div>
+          <div class="cell o win"><span>O</span></div>
+          <div class="cell"></div>
+          <div class="cell o win"><span>O</span></div>
+          <div class="cell x"><span>X</span></div>
+          <div class="cell x"><span>X</span></div>
+
+          <!-- Diagonal Glowing Win Line -->
+          <div class="win-line" id="winLine">
+            <div class="glow-polygon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-rainbow">
+        © 2025 Tic Tac Toe Glow — Color your game with light and smile...
+      </p>
+    </footer>
+  </div>
+
+  <!-- Popup Modal -->
+  <div class="popup-overlay hidden" id="name-popup">
+    <div class="popup-container animated-popup">
+      <div class="popup-header">
+        <h2>Enter Player Names</h2>
+        <span class="popup-close" id="close-popup">&times;</span>
+      </div>
+      <form id="player-form" class="popup-body">
+        <div class="input-group">
+          <label for="player1">Player 1 <span class="required" style="color: rgb(251, 43, 43);">*</span></label>
+          <input type="text" id="player1" placeholder="Enter Name (Max 10)" />
+          <p class="error-message" id="error-player1">This is a required field.</p>
+        </div>
+
+        <div class="input-group">
+          <label for="player2">Player 2 <span class="required" style="color: rgb(251, 43, 43);">*</span></label>
+          <input type="text" id="player2" placeholder="Enter Name (Max 10)" />
+          <p class="error-message" id="error-player2">This is a required field.</p>
+        </div>
+        <div class="popup-actions">
+          <button type="submit" id="start-game" class="submit-btn">✔ Start</button>
+          <button type="button" id="cancel-game" class="cancel-btn">✖ Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboard-popup" class="leaderboard-modal lb-hidden">
+    <div class="lb-modal-container">
+      <span id="close-leaderboard" class="lb-close-btn">&times;</span>
+
+      <!-- Header -->
+      <div class="lb-modal-header">
+        <h2 class="lb-modal-title">Leaderboard</h2>
+      </div>
+
+      <!-- Tabs -->
+      <div class="lb-tabs">
+        <div class="lb-tab-wrapper">
+          <button id="leaderboardTab" class="lb-tab lb-tab-active">Leaderboard</button>
+          <button id="matchHistoryTab" class="lb-tab">Recent Matches</button>
+          <div class="lb-tab-underline"></div> <!-- sliding border -->
+        </div>
+      </div>
+
+      <!-- Leaderboard Section -->
+      <div id="leaderboardSection" class="lb-leaderboard-section">
+        <!-- Table Header -->
+        <div class="lb-table-header">
+          <div class="row-rank">Rank</div>
+          <div class="row-player">Player</div>
+          <div class="row-score">Total Score</div>
+        </div>
+        <!-- Scrollable Wrapper -->
+        <div class="lb-table-scrollable">
+          <!-- Table Body (will be populated by JS) -->
+          <div class="lb-table-body" id="leaderboardBody">
+            <!-- Dynamic rows will be injected here by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Match History Section -->
+      <div id="matchHistorySection" class="lb-match-history-section lb-hidden">
+        <div class="lb-match-history-header">
+          <h2>Recent Match History</h2>
+          <p>Last 10 matches</p>
+        </div>
+
+        <div class="lb-match-history-body" id="matchHistoryBody">
+          <!-- Dynamic match history will be injected here by JS -->
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="lb-modal-footer">Last updated: Today at 2:45 PM</div>
+    </div>
+  </div>
+
+
+  <!-- External JS -->
+  <script src="assets/home.js"></script>
+</body>
+
+</html>
