@@ -91,11 +91,11 @@ function init() {
     ) {
       const activeField = document.activeElement;
       if (activeField === p1Input && errorP1) {
-        errorP1.textContent = "Both names should not be same.";
+        errorP1.textContent = "Player names must be different.";
         errorP1.classList.add("show");
         isValid = false;
       } else if (activeField === p2Input && errorP2) {
-        errorP2.textContent = "Both names should not be same.";
+        errorP2.textContent = "Player names must be different.";
         errorP2.classList.add("show");
         isValid = false;
       }
