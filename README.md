@@ -45,5 +45,5 @@ DOM Manipulation
 <br>  
 Minimax Smart AI 
 <br>  
-Responsive & Animations 
+Responsive UI & Animations 
 
