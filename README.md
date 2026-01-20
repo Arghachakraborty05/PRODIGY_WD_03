@@ -6,30 +6,30 @@
 
 <h2> Features </h2>  
 
-<h3>✨ Neon Glow UI:</h3>  
+<h3> Neon Glow UI:</h3>  
 Futuristic design with glowing Orbitron font and animated win-line effects.  
 
-<h3>🎮 Two Game Modes:</h3>  
+<h3> Two Game Modes:</h3>  
 Single Player (You vs AI with Minimax logic + randomness)  
 Multiplayer (Player 1 vs Player 2)  
 
-<h3>⚡ Smooth Gameplay:</h3>  
+<h3> Smooth Gameplay:</h3>  
 Turn-based highlighting, real-time updates, and responsive feedback animations.  
 
-<h3>📊 Leaderboard & Match Records:</h3>  
+<h3> Leaderboard & Match Records:</h3>  
 - Stores the most recent 10 matches in LocalStorage 
 - Fully browser/profile/device-specific data storage
 - Auto-deletes oldest match data to prevent storage overflow  
 - Real-time leaderboard updates with fair ranking logic
 - Leaderboard popup to switch between **Rankings** and **Recent Matches**  
 
-<h3>🧠 Smart AI:</h3>  
+<h3> Smart AI:</h3>  
 Minimax algorithm with randomness for realistic and fun gameplay.  
 
 <h3>🖥 Browser Compatibility:</h3>  
 Works seamlessly across modern and older browsers/devices.  
 
-<h3>✅ Input Validation:</h3>  
+<h3> Input Validation:</h3>  
 Player name popup with input validation to ensure smooth setup.  
 
 <h2> Technologies Used </h2>  
