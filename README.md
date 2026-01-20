@@ -26,7 +26,7 @@ Turn-based highlighting, real-time updates, and responsive feedback animations.
 <h3> Smart AI:</h3>  
 Minimax algorithm with randomness for realistic and fun gameplay.  
 
-<h3>🖥 Browser Compatibility:</h3>  
+<h3> Browser Compatibility:</h3>  
 Works seamlessly across modern and older browsers/devices.  
 
 <h3> Input Validation:</h3>  
